@@ -1,6 +1,6 @@
 type Qanvas = {
-    canvas: HTMLCanvasElement;
-    context: CanvasRenderingContext2D;
+    canvas?: HTMLCanvasElement;
+    context?: CanvasRenderingContext2D;
     set(selector: string): Qanvas;
 };
 
