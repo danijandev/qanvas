@@ -1,23 +1,32 @@
 {
-  "name": "qanvas",
-  "version": "1.0.0",
-  "description": "Qanvas—shorthand for \"quick canvas\"—is a JavaScript library for the 2D Canvas API.",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/danijandev/qanvas.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/danijandev/qanvas/issues"
-  },
-  "homepage": "https://github.com/danijandev/qanvas#readme"
+    "name": "qanvas",
+    "version": "0.1.0",
+    "description": "Qanvas—shorthand for \"quick canvas\"—is a JavaScript library for the 2D Canvas API.",
+    "keywords": [
+        "javascript",
+        "library",
+        "2d",
+        "canvas"
+    ],
+    "homepage": "https://github.com/danijandev/qanvas#readme",
+    "bugs": {
+        "url": "https://github.com/danijandev/qanvas/issues",
+        "email": "danijan.dev@gmail.com"
+    },
+    "license": "MIT",
+    "author": "Danijan",
+    "exports": {
+        ".": "./dist/index.js"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/danijandev/qanvas.git"
+    },
+    "scripts": {
+        "build": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
 }
