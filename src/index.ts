@@ -5,13 +5,14 @@ const TYPE_RECT = 1;
 interface Qanvas {
     canvas?: HTMLCanvasElement;
     context?: CanvasRenderingContext2D;
-    items: Map<string, Rect>;
+    items: Map<string, Item>;
     set(selector: string): Qanvas;
     get(name: string): Item;
-    rect(name: string, x?: number, y?: number, width?: number, height?: number): Rect;
+    rect(name: string, x?: number, y?: number, width?: number, height?: number): Item | undefined;
 }
 
 interface Item {
+    type: number;
     x: number;
     y: number;
     width: number;
@@ -44,10 +45,10 @@ const qanvas: Qanvas = {
         return item;
     },
     rect(name: string, x?: number, y?: number, width?: number, height?: number) {
-        let rect: Rect | undefined = this.items.get(name);
+        const rect: Item | undefined = this.items.get(name);
         
         if (!rect) {
-            rect = {
+            const newRect = {
                 type: TYPE_RECT,
                 x: x ?? DEFAULT_POS,
                 y: y ?? DEFAULT_POS,
@@ -67,7 +68,13 @@ const qanvas: Qanvas = {
                 }
             }
             
-            this.items.set(name, rect);
+            this.items.set(name, newRect);
+            
+            return newRect;
+        }
+        
+        if (rect.type !== TYPE_RECT) {
+            throw new Error(`qanvas: ${name} is not a rect!`);
         }
         
         return rect;

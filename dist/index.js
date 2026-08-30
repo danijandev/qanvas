@@ -17,9 +17,9 @@ const qanvas = {
         return item;
     },
     rect(name, x, y, width, height) {
-        let rect = this.items.get(name);
+        const rect = this.items.get(name);
         if (!rect) {
-            rect = {
+            const newRect = {
                 type: TYPE_RECT,
                 x: x ?? DEFAULT_POS,
                 y: y ?? DEFAULT_POS,
@@ -36,7 +36,11 @@ const qanvas = {
                     return this;
                 }
             };
-            this.items.set(name, rect);
+            this.items.set(name, newRect);
+            return newRect;
+        }
+        if (rect.type !== TYPE_RECT) {
+            throw new Error(`qanvas: ${name} is not a rect!`);
         }
         return rect;
     }
