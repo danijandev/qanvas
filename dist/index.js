@@ -1,5 +1,6 @@
-const defaultPos = 0;
-const defaultSize = 0;
+const DEFAULT_POS = 0;
+const DEFAULT_SIZE = 0;
+const TYPE_RECT = 1;
 const qanvas = {
     items: new Map(),
     set(selector) {
@@ -19,11 +20,11 @@ const qanvas = {
         let rect = this.items.get(name);
         if (!rect) {
             rect = {
-                type: 1,
-                x: x ?? defaultPos,
-                y: y ?? defaultPos,
-                width: width ?? defaultSize,
-                height: height ?? defaultSize,
+                type: TYPE_RECT,
+                x: x ?? DEFAULT_POS,
+                y: y ?? DEFAULT_POS,
+                width: width ?? DEFAULT_SIZE,
+                height: height ?? DEFAULT_SIZE,
                 pos(x, y) {
                     this.x = x;
                     this.y = y;

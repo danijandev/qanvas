@@ -1,3 +1,4 @@
+declare const TYPE_RECT = 1;
 interface Qanvas {
     canvas?: HTMLCanvasElement;
     context?: CanvasRenderingContext2D;
@@ -14,7 +15,7 @@ interface Item {
     pos(x: number, y: number): Item;
 }
 interface Rect extends Item {
-    type: 1;
+    type: typeof TYPE_RECT;
     size(width: number, height: number): Rect;
 }
 declare const qanvas: Qanvas;

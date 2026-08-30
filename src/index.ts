@@ -1,5 +1,6 @@
-const defaultPos = 0;
-const defaultSize = 0;
+const DEFAULT_POS = 0;
+const DEFAULT_SIZE = 0;
+const TYPE_RECT = 1;
 
 interface Qanvas {
     canvas?: HTMLCanvasElement;
@@ -19,7 +20,7 @@ interface Item {
 }
 
 interface Rect extends Item {
-    type: 1;
+    type: typeof TYPE_RECT;
     size(width: number, height: number): Rect;
 }
 
@@ -47,11 +48,11 @@ const qanvas: Qanvas = {
         
         if (!rect) {
             rect = {
-                type: 1,
-                x: x ?? defaultPos,
-                y: y ?? defaultPos,
-                width: width ?? defaultSize,
-                height: height ?? defaultSize,
+                type: TYPE_RECT,
+                x: x ?? DEFAULT_POS,
+                y: y ?? DEFAULT_POS,
+                width: width ?? DEFAULT_SIZE,
+                height: height ?? DEFAULT_SIZE,
                 pos(x: number, y: number) {
                     this.x = x;
                     this.y = y;
