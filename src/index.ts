@@ -1,5 +1,6 @@
 const DEFAULT_POS = 0;
 const DEFAULT_SIZE = 0;
+const DEFAULT_COLOR = "rgb(0, 0, 0)";
 const TYPE_RECT = 1;
 
 interface Qanvas {
@@ -8,7 +9,8 @@ interface Qanvas {
     items: Map<string, Item>;
     set(selector: string): Qanvas;
     get(name: string): Item;
-    rect(name: string, x?: number, y?: number, width?: number, height?: number): Item | undefined;
+    rect(name: string, x?: number, y?: number, width?: number, height?: number, color?: string): Item | undefined;
+    draw(name: string): Qanvas;
 }
 
 interface Item {
@@ -17,12 +19,14 @@ interface Item {
     y: number;
     width: number;
     height: number;
-    pos(x: number, y: number): Item;
+    color: string;
+    setpos(x: number, y: number): Item;
+    setcolor(color: string): Item;
 }
 
 interface Rect extends Item {
     type: typeof TYPE_RECT;
-    size(width: number, height: number): Rect;
+    setsize(width: number, height: number): Rect;
 }
 
 const qanvas: Qanvas = {
@@ -44,7 +48,7 @@ const qanvas: Qanvas = {
         
         return item;
     },
-    rect(name: string, x?: number, y?: number, width?: number, height?: number) {
+    rect(name: string, x?: number, y?: number, width?: number, height?: number, color?: string) {
         const rect: Item | undefined = this.items.get(name);
         
         if (!rect) {
@@ -54,13 +58,19 @@ const qanvas: Qanvas = {
                 y: y ?? DEFAULT_POS,
                 width: width ?? DEFAULT_SIZE,
                 height: height ?? DEFAULT_SIZE,
-                pos(x: number, y: number) {
+                color: color ?? DEFAULT_COLOR,
+                setpos(x: number, y: number) {
                     this.x = x;
                     this.y = y;
                     
                     return this;
                 },
-                size(width: number, height: number) {
+                setcolor(color: string) {
+                    this.color = color;
+                    
+                    return this;
+                },
+                setsize(width: number, height: number) {
                     this.width = width;
                     this.height = height;
                     
@@ -78,6 +88,27 @@ const qanvas: Qanvas = {
         }
         
         return rect;
+    },
+    draw(name: string) {
+        const item: Item | undefined = this.items.get(name);
+        
+        if (!item) {
+            throw new Error(`qanvas: ${name} is not an item!`);
+        }
+        
+        if (!this.context) {
+            throw new Error("qanvas: qanvas has no context!");
+        }
+        
+        switch (item.type) {
+            case TYPE_RECT:
+                this.context.fillStyle = item.color;
+                this.context.fillRect(item.x, item.y, item.width, item.height);
+                
+                break;
+        }
+        
+        return this;
     }
 };
 
