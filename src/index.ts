@@ -48,7 +48,7 @@ const qanvas: Qanvas = {
         const rect: Item | undefined = this.items.get(name);
         
         if (!rect) {
-            const newRect = {
+            const newRect: Rect = {
                 type: TYPE_RECT,
                 x: x ?? DEFAULT_POS,
                 y: y ?? DEFAULT_POS,
