@@ -1,8 +1,8 @@
 interface Item {
     _type: number;
     _color: string;
-    x: 0;
-    y: 0;
+    x: number;
+    y: number;
 }
 
 interface Qanvas {
