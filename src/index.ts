@@ -1,20 +1,31 @@
+const TYPE_RECT = 1;
+
 interface Item {
     _type?: number;
     _color: string;
     x: number;
     y: number;
+    rect?(): Rect;
+}
+
+interface Rect extends Item {
+    _type?: typeof TYPE_RECT;
+    width: number;
+    height: number;
 }
 
 interface Qanvas {
     _items: Map<string, Item>;
     _defaultColor: string;
     _defaultPos: number;
+    _defaultSize: number;
 }
 
 const qanvas: Qanvas = {
     _items: new Map(),
     _defaultColor: "black",
-    _defaultPos: 0
+    _defaultPos: 0,
+    _defaultSize: 0
 }
 
 function Q(...items: string[]): Item[] | Item | Qanvas {
@@ -34,7 +45,25 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
             const newItem: Item = {
                 _color: qanvas._defaultColor,
                 x: qanvas._defaultPos,
-                y: qanvas._defaultPos
+                y: qanvas._defaultPos,
+                rect() {
+                    if (this._type) {
+                        throw new Error ("qanvas: Item already has a type!");
+                    }
+                    
+                    const newRect: Rect = {
+                        _type: TYPE_RECT,
+                        _color: this._color,
+                        x: this.x,
+                        y: this.y,
+                        width: qanvas._defaultSize,
+                        height: qanvas._defaultSize
+                    }
+                    
+                    qanvasItems.set(item, newRect);
+                    
+                    return newRect;
+                }
             };
             
             qanvasItems.set(item, newItem);
