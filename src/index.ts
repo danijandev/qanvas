@@ -1,16 +1,16 @@
 interface Item {
-    type: number;
-    color: string;
+    _type: number;
+    _color: string;
     x: 0;
     y: 0;
 }
 
 interface Qanvas {
-    items: Map<string, Item>;
+    _items: Map<string, Item>;
 }
 
 const qanvas: Qanvas = {
-    items: new Map()
+    _items: new Map()
 }
 
 function Q(...items: string[]): Item[] | Item | Qanvas {
@@ -22,7 +22,7 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
     
     for (let i: number = 0; i < items.length; i++) {
         const item: string = items[i];
-        const parsedItem: Item | undefined = qanvas.items.get(item);
+        const parsedItem: Item | undefined = qanvas._items.get(item);
         
         if (!parsedItem) {
             throw new Error("qanvas: Cannot parse item!");

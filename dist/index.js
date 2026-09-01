@@ -1,5 +1,5 @@
 const qanvas = {
-    items: new Map()
+    _items: new Map()
 };
 function Q(...items) {
     let parsedItems = [];
@@ -8,7 +8,7 @@ function Q(...items) {
     }
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
-        const parsedItem = qanvas.items.get(item);
+        const parsedItem = qanvas._items.get(item);
         if (!parsedItem) {
             throw new Error("qanvas: Cannot parse item!");
         }
