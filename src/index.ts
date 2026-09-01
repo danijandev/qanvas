@@ -52,10 +52,8 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                     }
                     
                     const newRect: Rect = {
+                        ...this,
                         _type: TYPE_RECT,
-                        _color: this._color,
-                        x: this.x,
-                        y: this.y,
                         width: qanvas._defaultSize,
                         height: qanvas._defaultSize
                     }

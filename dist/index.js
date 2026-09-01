@@ -24,10 +24,8 @@ function Q(...items) {
                         throw new Error("qanvas: Item already has a type!");
                     }
                     const newRect = {
+                        ...this,
                         _type: TYPE_RECT,
-                        _color: this._color,
-                        x: this.x,
-                        y: this.y,
                         width: qanvas._defaultSize,
                         height: qanvas._defaultSize
                     };
