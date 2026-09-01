@@ -18,6 +18,8 @@ const qanvas: Qanvas = {
 }
 
 function Q(...items: string[]): Item[] | Item | Qanvas {
+    const qanvasItems: Map<string, Item> = qanvas._items;
+    
     let parsedItems: Item[] = [];
     
     if (items.length === 0) {
@@ -26,7 +28,7 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
     
     for (let i: number = 0; i < items.length; i++) {
         const item: string = items[i];
-        const parsedItem: Item | undefined = qanvas._items.get(item);
+        const parsedItem: Item | undefined = qanvasItems.get(item);
         
         if (!parsedItem) {
             const newItem: Item = {
@@ -35,7 +37,7 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                 y: qanvas._defaultPos
             };
             
-            qanvas._items.set(item, newItem);
+            qanvasItems.set(item, newItem);
             parsedItems.push(newItem);
             
             continue;
