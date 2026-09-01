@@ -14,11 +14,12 @@ interface Rect extends Item {
     _type?: typeof TYPE_RECT;
     width: number;
     height: number;
+    draw(): Rect;
 }
 
 interface Qanvas {
-    _canvas: HTMLCanvasElement;
-    _context: CanvasRenderingContext2D;
+    _canvas?: HTMLCanvasElement;
+    _context?: CanvasRenderingContext2D;
     _items: Map<string, Item>;
     _defaultColor: string;
     _defaultPos: number;
@@ -43,6 +44,7 @@ const qanvas: Qanvas = {
 
 function Q(...items: string[]): Item[] | Item | Qanvas {
     const qanvasItems: Map<string, Item> = qanvas._items;
+    const qanvasContext: CanvasRenderingContext2D | undefined = qanvas._context;
     
     let parsedItems: Item[] = [];
     
@@ -68,7 +70,17 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                         ...this,
                         _type: TYPE_RECT,
                         width: qanvas._defaultSize,
-                        height: qanvas._defaultSize
+                        height: qanvas._defaultSize,
+                        draw() {
+                            if (!qanvasContext) {
+                                throw new Error("qanvas: No context to use!");
+                            }
+                            
+                            qanvasContext.fillStyle = this._color;
+                            qanvasContext.fillRect(this.x, this.y, this.width, this.height);
+                            
+                            return this;
+                        }
                     }
                     
                     qanvasItems.set(item, newRect);
