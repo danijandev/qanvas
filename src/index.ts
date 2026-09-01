@@ -1,4 +1,4 @@
-const TYPE_RECT = 1;
+const TYPE_RECT: number = 1;
 
 interface Item {
     _type?: number;
