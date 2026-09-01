@@ -1,7 +1,5 @@
 const TYPE_RECT: number = 1;
 
-let TRIED: boolean = false;
-
 interface Item {
     _type?: number;
     _color: string;

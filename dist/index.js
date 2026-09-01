@@ -1,5 +1,4 @@
 const TYPE_RECT = 1;
-let TRIED = false;
 const qanvas = {
     _items: new Map(),
     _defaultColor: "black",
