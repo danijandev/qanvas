@@ -33,11 +33,9 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
     
     if (parsedItems.length === 1) {
         return parsedItems[0];
-    } else {
-        return parsedItems;
     }
     
-    return qanvas;
+    return parsedItems;
 }
 
 export default Q;
