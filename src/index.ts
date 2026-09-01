@@ -1,5 +1,7 @@
 const TYPE_RECT: number = 1;
 
+let TRIED: boolean = false;
+
 interface Item {
     _type?: number;
     _color: string;
@@ -15,17 +17,28 @@ interface Rect extends Item {
 }
 
 interface Qanvas {
+    _canvas: HTMLCanvasElement;
+    _context: CanvasRenderingContext2D;
     _items: Map<string, Item>;
     _defaultColor: string;
     _defaultPos: number;
     _defaultSize: number;
+    set(selector: string): Qanvas;
 }
 
 const qanvas: Qanvas = {
     _items: new Map(),
     _defaultColor: "black",
     _defaultPos: 0,
-    _defaultSize: 0
+    _defaultSize: 0,
+    set(selector: string) {
+        const canvas = document.querySelector(selector) as HTMLCanvasElement;
+        
+        this._context = canvas.getContext("2d") as CanvasRenderingContext2D;
+        this._canvas = canvas;
+        
+        return this;
+    }
 }
 
 function Q(...items: string[]): Item[] | Item | Qanvas {
