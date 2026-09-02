@@ -6,6 +6,8 @@ interface Item {
     x: number;
     y: number;
     pos(x: number, y: number): Item;
+    setx(x: number): Item;
+    sety(y: number): Item;
     rect?(): Rect;
 }
 
@@ -63,6 +65,16 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                 y: qanvas._defaultPos,
                 pos(x: number, y: number) {
                     this.x = x;
+                    this.y = y;
+                    
+                    return this;
+                },
+                setx(x: number) {
+                    this.x = x;
+                    
+                    return this;
+                },
+                sety(y: number) {
                     this.y = y;
                     
                     return this;
