@@ -4,6 +4,7 @@ interface Item {
     _color: string;
     x: number;
     y: number;
+    pos(x: number, y: number): Item;
     rect?(): Rect;
 }
 interface Rect extends Item {

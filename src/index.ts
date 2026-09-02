@@ -5,6 +5,7 @@ interface Item {
     _color: string;
     x: number;
     y: number;
+    pos(x: number, y: number): Item;
     rect?(): Rect;
 }
 
@@ -59,6 +60,12 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                 _color: qanvas._defaultColor,
                 x: qanvas._defaultPos,
                 y: qanvas._defaultPos,
+                pos(x: number, y: number) {
+                    this.x = x;
+                    this.y = y;
+                    
+                    return this;
+                },
                 rect() {
                     if (this._type) {
                         throw new Error ("qanvas: Item already has a type!");
