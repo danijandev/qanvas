@@ -13,6 +13,7 @@ interface Rect extends Item {
     _type?: typeof TYPE_RECT;
     width: number;
     height: number;
+    size(width: number, height: number): Item;
     draw(): Rect;
 }
 
@@ -76,6 +77,12 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                         _type: TYPE_RECT,
                         width: qanvas._defaultSize,
                         height: qanvas._defaultSize,
+                        size(width: number, height: number) {
+                            this.width = width;
+                            this.height = height;
+                            
+                            return this;
+                        },
                         draw() {
                             if (!qanvasContext) {
                                 throw new Error("qanvas: No context to use!");

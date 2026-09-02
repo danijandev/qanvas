@@ -40,6 +40,11 @@ function Q(...items) {
                         _type: TYPE_RECT,
                         width: qanvas._defaultSize,
                         height: qanvas._defaultSize,
+                        size(width, height) {
+                            this.width = width;
+                            this.height = height;
+                            return this;
+                        },
                         draw() {
                             if (!qanvasContext) {
                                 throw new Error("qanvas: No context to use!");
