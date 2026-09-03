@@ -51,6 +51,11 @@ function Q(...items) {
                     this.y = y;
                     return this;
                 },
+                addpos(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    return this;
+                },
                 addx(x) {
                     this.x += x;
                     return this;

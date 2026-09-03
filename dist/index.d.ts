@@ -7,6 +7,7 @@ interface Item {
     pos(x: number, y: number): Item;
     setx(x: number): Item;
     sety(y: number): Item;
+    addpos(x: number, y: number): Item;
     addx(x: number): Item;
     addy(y: number): Item;
     subx(x: number): Item;

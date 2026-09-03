@@ -8,8 +8,10 @@ interface Item {
     pos(x: number, y: number): Item;
     setx(x: number): Item;
     sety(y: number): Item;
+    addpos(x: number, y: number): Item;
     addx(x: number): Item;
     addy(y: number): Item;
+    subpos(x: number, y: number): Item;
     subx(x: number): Item;
     suby(y: number): Item;
     rect(x?: number, y?: number, width?: number, height?: number): Rect;
@@ -102,6 +104,12 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                     
                     return this;
                 },
+                addpos(x: number, y: number) {
+                    this.x = x;
+                    this.y = y;
+                    
+                    return this;
+                },
                 addx(x: number) {
                     this.x += x;
                     
@@ -109,6 +117,12 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                 },
                 addy(y: number) {
                     this.y += y;
+                    
+                    return this;
+                },
+                subpos(x: number, y: number) {
+                    this.x -= x;
+                    this.y -= y;
                     
                     return this;
                 },
