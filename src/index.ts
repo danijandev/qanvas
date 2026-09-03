@@ -12,7 +12,7 @@ interface Item {
     addy(y: number): Item;
     subx(x: number): Item;
     suby(y: number): Item;
-    rect?(): Rect;
+    rect(): Rect;
 }
 
 interface Rect extends Item {
