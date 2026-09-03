@@ -7,7 +7,19 @@ const qanvas = {
     set(selector) {
         const canvas = document.querySelector(selector);
         this._context = canvas.getContext("2d");
+        this.width = canvas.width;
+        this.height = canvas.height;
         this._canvas = canvas;
+        return this;
+    },
+    clear() {
+        if (!this._context) {
+            throw new Error("qanvas: No context to use!");
+        }
+        if (!this.width || !this.height) {
+            throw new Error("qanvas: No set width and height!");
+        }
+        this._context.clearRect(0, 0, this.width, this.height);
         return this;
     }
 };

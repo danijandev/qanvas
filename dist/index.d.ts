@@ -24,11 +24,14 @@ interface Rect extends Item {
 interface Qanvas {
     _canvas?: HTMLCanvasElement;
     _context?: CanvasRenderingContext2D;
+    width?: number;
+    height?: number;
     _items: Map<string, Item>;
     _defaultColor: string;
     _defaultPos: number;
     _defaultSize: number;
     set(selector: string): Qanvas;
+    clear(): Qanvas;
 }
 declare function Q(...items: string[]): Item[] | Item | Qanvas;
 export default Q;
