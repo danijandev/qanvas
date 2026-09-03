@@ -31,6 +31,22 @@ function Q(...items) {
                     this.y = y;
                     return this;
                 },
+                setx(x) {
+                    this.x = x;
+                    return this;
+                },
+                sety(y) {
+                    this.y = y;
+                    return this;
+                },
+                addx(x) {
+                    this.x += x;
+                    return this;
+                },
+                addy(y) {
+                    this.y += y;
+                    return this;
+                },
                 rect() {
                     if (this._type) {
                         throw new Error("qanvas: Item already has a type!");

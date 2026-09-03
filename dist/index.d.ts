@@ -5,6 +5,10 @@ interface Item {
     x: number;
     y: number;
     pos(x: number, y: number): Item;
+    setx(x: number): Item;
+    sety(y: number): Item;
+    addx(x: number): Item;
+    addy(y: number): Item;
     rect?(): Rect;
 }
 interface Rect extends Item {

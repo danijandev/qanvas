@@ -8,6 +8,8 @@ interface Item {
     pos(x: number, y: number): Item;
     setx(x: number): Item;
     sety(y: number): Item;
+    addx(x: number): Item;
+    addy(y: number): Item;
     rect?(): Rect;
 }
 
@@ -76,6 +78,16 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                 },
                 sety(y: number) {
                     this.y = y;
+                    
+                    return this;
+                },
+                addx(x: number) {
+                    this.x += x;
+                    
+                    return this;
+                },
+                addy(y: number) {
+                    this.y += y;
                     
                     return this;
                 },
