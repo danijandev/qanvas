@@ -75,6 +75,13 @@ function Q(...items) {
                             this.height = height;
                             return this;
                         },
+                        clear() {
+                            if (!qanvasContext) {
+                                throw new Error("qanvas: No context to use!");
+                            }
+                            qanvasContext.clearRect(this.x, this.y, this.width, this.height);
+                            return this;
+                        },
                         draw() {
                             if (!qanvasContext) {
                                 throw new Error("qanvas: No context to use!");

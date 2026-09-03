@@ -18,6 +18,7 @@ interface Rect extends Item {
     width: number;
     height: number;
     size(width: number, height: number): Item;
+    clear(): Rect;
     draw(): Rect;
 }
 interface Qanvas {

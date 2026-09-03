@@ -20,6 +20,7 @@ interface Rect extends Item {
     width: number;
     height: number;
     size(width: number, height: number): Item;
+    clear(): Rect;
     draw(): Rect;
 }
 
@@ -124,6 +125,15 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                         size(width: number, height: number) {
                             this.width = width;
                             this.height = height;
+                            
+                            return this;
+                        },
+                        clear() {
+                            if (!qanvasContext) {
+                                throw new Error("qanvas: No context to use!")
+                            }
+                            
+                            qanvasContext.clearRect(this.x, this.y, this.width, this.height);
                             
                             return this;
                         },
