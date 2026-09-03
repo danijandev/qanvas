@@ -9,6 +9,8 @@ interface Item {
     sety(y: number): Item;
     addx(x: number): Item;
     addy(y: number): Item;
+    subx(x: number): Item;
+    suby(y: number): Item;
     rect?(): Rect;
 }
 interface Rect extends Item {

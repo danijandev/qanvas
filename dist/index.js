@@ -47,6 +47,14 @@ function Q(...items) {
                     this.y += y;
                     return this;
                 },
+                subx(x) {
+                    this.x -= x;
+                    return this;
+                },
+                suby(y) {
+                    this.y -= y;
+                    return this;
+                },
                 rect() {
                     if (this._type) {
                         throw new Error("qanvas: Item already has a type!");

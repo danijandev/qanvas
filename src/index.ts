@@ -10,6 +10,8 @@ interface Item {
     sety(y: number): Item;
     addx(x: number): Item;
     addy(y: number): Item;
+    subx(x: number): Item;
+    suby(y: number): Item;
     rect?(): Rect;
 }
 
@@ -88,6 +90,16 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                 },
                 addy(y: number) {
                     this.y += y;
+                    
+                    return this;
+                },
+                subx(x: number) {
+                    this.x -= x;
+                    
+                    return this;
+                },
+                suby(y: number) {
+                    this.y -= y;
                     
                     return this;
                 },
