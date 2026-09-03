@@ -12,7 +12,7 @@ interface Item {
     addy(y: number): Item;
     subx(x: number): Item;
     suby(y: number): Item;
-    rect(): Rect;
+    rect(x?: number, y?: number, width?: number, height?: number): Rect;
 }
 
 interface Rect extends Item {
@@ -103,16 +103,24 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                     
                     return this;
                 },
-                rect() {
+                rect(x?: number, y?: number, width?: number, height?: number) {
                     if (this._type) {
                         throw new Error ("qanvas: Item already has a type!");
+                    }
+                    
+                    if (x) {
+                        this.x = x;
+                    }
+                    
+                    if (y) {
+                        this.y = y;
                     }
                     
                     const newRect: Rect = {
                         ...this,
                         _type: TYPE_RECT,
-                        width: qanvas._defaultSize,
-                        height: qanvas._defaultSize,
+                        width: width ?? qanvas._defaultSize,
+                        height: height ?? qanvas._defaultSize,
                         size(width: number, height: number) {
                             this.width = width;
                             this.height = height;

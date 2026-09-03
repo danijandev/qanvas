@@ -55,15 +55,21 @@ function Q(...items) {
                     this.y -= y;
                     return this;
                 },
-                rect() {
+                rect(x, y, width, height) {
                     if (this._type) {
                         throw new Error("qanvas: Item already has a type!");
+                    }
+                    if (x) {
+                        this.x = x;
+                    }
+                    if (y) {
+                        this.y = y;
                     }
                     const newRect = {
                         ...this,
                         _type: TYPE_RECT,
-                        width: qanvas._defaultSize,
-                        height: qanvas._defaultSize,
+                        width: width ?? qanvas._defaultSize,
+                        height: height ?? qanvas._defaultSize,
                         size(width, height) {
                             this.width = width;
                             this.height = height;

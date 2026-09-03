@@ -11,7 +11,7 @@ interface Item {
     addy(y: number): Item;
     subx(x: number): Item;
     suby(y: number): Item;
-    rect?(): Rect;
+    rect(x?: number, y?: number, width?: number, height?: number): Rect;
 }
 interface Rect extends Item {
     _type?: typeof TYPE_RECT;
