@@ -26,6 +26,7 @@ interface Rect extends Item {
     addsize(width: number, height: number): Rect;
     addwidth(width: number): Rect;
     addheight(height: number): Rect;
+    subsize(width: number, height: number): Rect;
     clear(): Rect;
     draw(): Rect;
 }
