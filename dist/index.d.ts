@@ -10,6 +10,7 @@ interface Item {
     addpos(x: number, y: number): Item;
     addx(x: number): Item;
     addy(y: number): Item;
+    subpos(x: number, y: number): Item;
     subx(x: number): Item;
     suby(y: number): Item;
     rect(x?: number, y?: number, width?: number, height?: number): Rect;

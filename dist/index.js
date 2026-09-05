@@ -64,6 +64,11 @@ function Q(...items) {
                     this.y += y;
                     return this;
                 },
+                subpos(x, y) {
+                    this.x -= x;
+                    this.y -= y;
+                    return this;
+                },
                 subx(x) {
                     this.x -= x;
                     return this;
