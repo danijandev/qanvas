@@ -30,6 +30,7 @@ interface Rect extends Item {
     addheight(height: number): Rect;
     subsize(width: number, height: number): Rect;
     subwidth(width: number): Rect;
+    subheight(height: number): Rect;
     clear(): Rect;
     draw(): Rect;
 }
@@ -202,6 +203,11 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                         },
                         subwidth(width: number) {
                             this.width -= width;
+                            
+                            return this;
+                        },
+                        subheight(height: number) {
+                            this.height -= height;
                             
                             return this;
                         },
