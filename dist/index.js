@@ -105,6 +105,11 @@ function Q(...items) {
                             this.height = height;
                             return this;
                         },
+                        addsize(width, height) {
+                            this.width += width;
+                            this.height += height;
+                            return this;
+                        },
                         clear() {
                             if (!qanvasContext) {
                                 throw new Error("qanvas: No context to use!");

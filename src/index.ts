@@ -25,6 +25,7 @@ interface Rect extends Item {
     size(width: number, height: number): Rect;
     setwidth(width: number): Rect;
     setheight(height: number): Rect;
+    addsize(width: number, height: number): Rect;
     clear(): Rect;
     draw(): Rect;
 }
@@ -170,6 +171,12 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                         },
                         setheight(height: number) {
                             this.height = height;
+                            
+                            return this;
+                        },
+                        addsize(width: number, height: number) {
+                            this.width += width;
+                            this.height += height;
                             
                             return this;
                         },
