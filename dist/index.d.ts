@@ -14,6 +14,7 @@ interface Item {
     subx(x: number): Item;
     suby(y: number): Item;
     rect(x?: number, y?: number, width?: number, height?: number): Rect;
+    back(): Qanvas;
 }
 interface Rect extends Item {
     _type?: typeof TYPE_RECT;

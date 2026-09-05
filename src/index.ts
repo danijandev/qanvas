@@ -15,6 +15,7 @@ interface Item {
     subx(x: number): Item;
     suby(y: number): Item;
     rect(x?: number, y?: number, width?: number, height?: number): Rect;
+    back(): Qanvas;
 }
 
 interface Rect extends Item {
@@ -184,6 +185,9 @@ function Q(...items: string[]): Item[] | Item | Qanvas {
                     qanvasItems.set(item, newRect);
                     
                     return newRect;
+                },
+                back() {
+                    return qanvas;
                 }
             };
             

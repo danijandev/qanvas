@@ -115,6 +115,9 @@ function Q(...items) {
                     };
                     qanvasItems.set(item, newRect);
                     return newRect;
+                },
+                back() {
+                    return qanvas;
                 }
             };
             qanvasItems.set(item, newItem);
