@@ -22,7 +22,7 @@ interface Rect extends Item {
     _type?: typeof TYPE_RECT;
     width: number;
     height: number;
-    size(width: number, height: number): Item;
+    size(width: number, height: number): Rect;
     clear(): Rect;
     draw(): Rect;
 }
