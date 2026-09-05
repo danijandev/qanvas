@@ -123,6 +123,10 @@ function Q(...items) {
                             this.height -= height;
                             return this;
                         },
+                        subwidth(width) {
+                            this.width -= width;
+                            return this;
+                        },
                         clear() {
                             if (!qanvasContext) {
                                 throw new Error("qanvas: No context to use!");
