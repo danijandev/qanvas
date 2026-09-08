@@ -53,6 +53,10 @@ class Item {
         this.y -= y;
         return this;
     }
+    color(color) {
+        this._color = color;
+        return this;
+    }
     rect(x, y, width, height) {
         if (this.type) {
             throw new Error("qanvas: Cannot convert Item to Rect as Item already has a type!");

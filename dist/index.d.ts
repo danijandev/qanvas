@@ -23,6 +23,7 @@ declare class Item {
     subpos(x: number, y: number): this;
     subx(x: number): this;
     suby(y: number): this;
+    color(color: string): this;
     rect(x?: number, y?: number, width?: number, height?: number): Rect;
     back(): Qanvas;
 }
