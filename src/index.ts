@@ -89,7 +89,7 @@ class Item {
             throw new Error("qanvas: Cannot convert Item to Rect as Item already has a type!");
         }
         
-        const newRect = new Rect(this.name, x ?? this.x, y ?? this.y, width ?? DEFAULT_SIZE, height ?? DEFAULT_SIZE, this._color);
+        const newRect: Rect = new Rect(this.name, x ?? this.x, y ?? this.y, width ?? DEFAULT_SIZE, height ?? DEFAULT_SIZE, this._color);
         
         qanvas.items.set(this.name, newRect);
         
