@@ -24,25 +24,8 @@ declare class Item {
     subx(x: number): this;
     suby(y: number): this;
     color(color: string): this;
-    rect(x?: number, y?: number, width?: number, height?: number): Rect;
+    rect(x?: number, y?: number, width?: number, height?: number): Item;
     back(): Qanvas;
-}
-declare class Rect extends Item {
-    width: number;
-    height: number;
-    type: number;
-    constructor(name: string, x: number, y: number, width: number, height: number, color: string);
-    size(width: number, height: number): this;
-    setwidth(width: number): this;
-    setheight(height: number): this;
-    addsize(width: number, height: number): this;
-    addwidth(width: number): this;
-    addheight(height: number): this;
-    subsize(width: number, height: number): this;
-    subwidth(width: number): this;
-    subheight(height: number): this;
-    clear(): this;
-    draw(): this;
 }
 declare function Q(...items: string[]): Item[] | Item | Qanvas;
 export default Q;

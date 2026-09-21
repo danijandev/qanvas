@@ -58,6 +58,9 @@ class Item {
         return this;
     }
     rect(x, y, width, height) {
+        if (this.type === TYPE_RECT) {
+            return this;
+        }
         if (this.type) {
             throw new Error("qanvas: Cannot convert Item to Rect as Item already has a type!");
         }
